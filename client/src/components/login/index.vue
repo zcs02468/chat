@@ -15,9 +15,10 @@
                 </el-form-item>
                 <el-form-item prop="code">
                     <el-input class="code_input" prefix-icon="el-icon-key" type="password" v-model="ruleForm.code" autocomplete="off" placeholder="验证码" maxlength="4"></el-input>
-                    <div class="code">
-                        <img :src="img_base64" alt="code" title="点击切换验证码" @click="changeCode">
-                    </div>
+                    <!-- <div class="code">
+                        <img :src="imgUrl" alt="code" title="点击切换验证码" @click="changeCode">
+                    </div> -->
+                    <div class="code" v-html="imgUrl" title="点击切换验证码" @click="changeCode"></div>
                 </el-form-item>
                 <el-form-item class="btn-box item-box">
                     <el-button type="primary" class="login" @click="login">登录</el-button>
@@ -56,7 +57,7 @@ export default {
         };
         return {
             showImg:1,
-            img_base64:'',
+            imgUrl:'',
             ruleForm: {
                 account: '',
                 pass: '',
@@ -72,7 +73,7 @@ export default {
                 ],
                 code: [
                     { required: true, message: '请输入验证码', trigger: 'blur' },
-                    { len: 4, message: '请输入4位有效验证码', trigger: 'blur' }
+                    { min: 1, max: 2, message: '请输入1到2位有效验证码', trigger: 'blur' }
                 ]
             }
         }
@@ -91,7 +92,7 @@ export default {
             let res = await HttpCode.getCode();
             let { code, data = {} } = res
             if (code === 200) {
-                this.img_base64 = data.img
+                this.imgUrl = data.img
                 this.ruleForm.code_token = data.token
             }
         },
@@ -115,6 +116,8 @@ export default {
                     token: data.token,
                     user_name: data.user_name
                 })
+            }else {
+                this.$message.error(msg);
             }
         }
     }

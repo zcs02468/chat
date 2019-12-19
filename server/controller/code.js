@@ -1,13 +1,15 @@
 const CheckCode = require('../db').CheckCode
 const BMP24 = require('gd-bmp').BMP24
 const { create_token } = require('../utils/token')
-
+const svgCaptcha = require('svg-captcha')
 
 module.exports = {
     async getCode(ctx, next) {
         try {
-            let { code, img } = makeCapcha();
-
+            // let { code, img } = makeCapcha();
+            // let a  = getAuthCode()
+            // console.log( 'aaaaaaa', a );
+            let { img, code } = getAuthCode()
             let token = create_token(code);
             await new CheckCode({ token, code }).save()
             ctx.body = {
@@ -15,7 +17,8 @@ module.exports = {
                 msg: '获取验证码成功！',
                 data: {
                     token,
-                    img: "data:image/bmp;base64," + img.getFileData().toString('base64')
+                    img: img,
+                    // img: "data:image/bmp;base64," + img.getFileData().toString('base64'),
                 }
             }
         } catch (error) {
@@ -26,6 +29,24 @@ module.exports = {
         }
     }
 };
+
+function getAuthCode() {
+    const cap = svgCaptcha.createMathExpr({
+        size: 4, // 验证码长度
+        width:100,
+        height:38,
+        fontSize: 40,
+        ignoreChars: '0oO1ilI', // 验证码字符中排除 0o1i
+        noise: 2, // 干扰线条的数量
+        color: true, // 验证码的字符是否有颜色，默认没有，如果设定了背景，则默认有
+        background: '#eee' // 验证码图片背景颜色
+    })
+    return {
+        img: cap.data,// 验证码
+        code: cap.text.toLowerCase()// 验证码字符，忽略大小写
+    }
+}
+
 
 // 仿PHP的rand函数
 function rand(min, max) {

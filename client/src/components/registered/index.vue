@@ -16,9 +16,10 @@
                 </el-form-item>
                 <el-form-item prop="code">
                     <el-input class="code_input" type="password" v-model="ruleForm.code" autocomplete="off" placeholder="验证码" maxlength="4"></el-input>
-                    <div class="code">
-                        <img :src="img_base64" alt="code" title="点击切换验证码" @click="changeCode">
-                    </div>
+                    <div class="code" v-html="imgUrl" title="点击切换验证码" @click="changeCode"></div>
+                    <!-- <div class="code">
+                        <img :src="imgUrl" alt="code" title="点击切换验证码" @click="changeCode">
+                    </div> -->
                 </el-form-item>
                 <el-form-item class="btn-box item-box">
                     <el-button type="primary" class="registered" @click="registered">注册</el-button>
@@ -77,7 +78,7 @@ export default {
                 code:'',
                 code_token:''
             },
-            img_base64: '',
+            imgUrl: '',
             rules: {
                 account: [
                     {validator: accountPass, trigger: 'blur'}
@@ -96,7 +97,8 @@ export default {
                     { required: true, message: '请输入验证码', trigger: 'blur' },
                     { len: 4, message: '请输入4位有效验证码', trigger: 'blur' }
                 ]
-            }
+            },
+            svgCode:''
         }
     },
     created() {
@@ -110,8 +112,9 @@ export default {
             let res = await HttpCode.getCode();
             let { code, data = {} } = res
             if (code === 200) {
-                this.img_base64 = data.img
+                this.imgUrl = data.img
                 this.ruleForm.code_token = data.token
+                this.svgCode = data.svg.svg
             }
         },
         changeCode() {

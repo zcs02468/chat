@@ -1,0 +1,8 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zcs02468/chat.git",
+  "author": "zcs02468 <zcs02468@163.com>",
+  "license": "MIT"
+}

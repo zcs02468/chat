@@ -11,6 +11,7 @@ router.get('/', async (ctx, next) => {
 router.get('/api/code/getCode', controller.code.getCode)// 验证码获取
 router.post('/api/user/register', controller.user.register)// 注册
 router.post('/api/user/login', controller.user.login)// 登陆
+router.get('/api/user/getQuote', controller.quote.getQuote)// 登陆
 
 
 

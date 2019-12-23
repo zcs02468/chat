@@ -2,8 +2,12 @@ const getOneData = require('./getOneData/index')
 
 
 
+const timeTask = async function () {
+    getOneData()
+}
 
 
+module.exports = timeTask;
 
 
 

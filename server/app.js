@@ -14,8 +14,10 @@ const { check_token } = require('./utils/token')
 const app = new Koa()
 
 const schedule = require('./module/schedule')
+const sendMail = require('./module/mail')
 
 schedule()
+// sendMail()
 onerror(app)
 
 //跨域配置

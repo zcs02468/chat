@@ -4,7 +4,7 @@ module.exports = {
     script: 'npm',
 
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
-    args: 'run dev',
+    args: 'run server',
     instances: 1,
     autorestart: true,
     watch: false,

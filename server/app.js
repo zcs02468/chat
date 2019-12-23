@@ -13,11 +13,12 @@ const { check_token } = require('./utils/token')
 
 const app = new Koa()
 
-const schedule = require('./module/schedule')
-const sendMail = require('./module/mail')
+const TimeTask = require('./timedTask/index')
 
-schedule()
-// sendMail()
+//定时任务
+TimeTask()
+
+
 onerror(app)
 
 //跨域配置

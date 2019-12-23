@@ -48,6 +48,8 @@ let recordSchema = new Schema({
 
 let quoteSchema = new Schema({
     content: String,
+    quoteImgUrl: String,
+    type: String,
     //创建时间
     create_time: {
         type: String,

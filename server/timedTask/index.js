@@ -4,12 +4,12 @@ const sendMail = require('../module/email/index')
 
 
 const timeTask = async function () {
-    // schedule.scheduleJob('01 0 0 * * *', ()=> {
+    schedule.scheduleJob('01 0 0 * * *', ()=> {
         getOneData()
-    // })
-    // schedule.scheduleJob('00 30 9 * * *', ()=> {
+    })
+    schedule.scheduleJob('00 30 9 * * *', ()=> {
         sendMail()
-    // })
+    })
 }
 module.exports = timeTask;
 

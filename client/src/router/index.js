@@ -9,7 +9,10 @@ const router = new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    redirect: '/home'
+    redirect: '/home',
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/home',
@@ -22,17 +25,22 @@ const router = new Router({
   {
     path: '/login',
     name: 'login',
+    meta: {
+      requiresAuth: true
+    },
     component: () => import(/* webpackChunkName: "login" */ '../page/login/index.vue')
   }
 ]
 })
 router.beforeEach((to, from, next) => {
   let token = store.state.user.token
-  // 判断要去的路由有没有requiresAuth
-  console.log( 'to.meta.requiresAuth', to.meta.requiresAuth );
-  
   if (to.meta.requiresAuth) {
     if (token) {
+      if( to.path == '/login' ) {
+        next({
+          path: '/home'
+        })
+      }
       if (from.query.redirect) {
         if (to.path === from.query.redirect) {
           next()

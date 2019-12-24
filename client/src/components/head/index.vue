@@ -1,11 +1,13 @@
 <!--  -->
 <template>
-    <div></div>
+    <div>
+        
+    </div>
 </template>
 
 <script>
 export default {
-    name: "index.vue",
+    name: "head_com",
     data() {
         return {};
     },

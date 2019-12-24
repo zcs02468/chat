@@ -1,8 +1,8 @@
 <!--  -->
 <template>
     <div class="auth-modal-box">
-        <login v-show="showLogin"></login>
-        <registered v-show="!showLogin"></registered>
+        <login v-if="showLogin"></login>
+        <registered v-if="!showLogin"></registered>
     </div>
 
 </template>

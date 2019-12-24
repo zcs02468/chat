@@ -114,7 +114,7 @@ export default {
             if (code === 200) {
                 this.imgUrl = data.img
                 this.ruleForm.code_token = data.token
-                this.svgCode = data.svg.svg
+                this.svgCode = data.svg
             }
         },
         changeCode() {

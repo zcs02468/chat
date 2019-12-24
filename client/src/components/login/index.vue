@@ -107,7 +107,10 @@ export default {
                 code_token: this.ruleForm.code_token
             })
             let { code, data={}, msg } = res;
+            console.log( 'res', res );
+            
             if( code === 200 ) {
+                
                 this.$router.push({
                     path: '/'
                 })

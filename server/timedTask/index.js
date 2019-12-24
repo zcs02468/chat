@@ -1,16 +1,17 @@
-const getOneData = require('./getOneData/index')
+const getOneData = require('../module/getOneData/index')
+const sendMail = require('../module/email/index')
 
 
 
 const timeTask = async function () {
-    getOneData()
+    schedule.scheduleJob('01 0 0 * * *', ()=> {
+        getOneData()
+    })
+    schedule.scheduleJob('00 30 9 * * *', ()=> {
+        sendMail()
+    })
 }
-
-
 module.exports = timeTask;
-
-
-
 
 
 

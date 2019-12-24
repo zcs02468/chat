@@ -6,7 +6,7 @@ const Quote = require('../../db').Quote;
 const url = 'http://wufazhuce.com'
 
 
-const getSiteData = function () {
+const getOneData = function () {
     request(url,function (err, res, body) {
         if( !err && res.statusCode == 200 ) {
             siteQuery(body)
@@ -28,10 +28,5 @@ const siteQuery = async function (body) {
     new Quote({ content, quoteImgUrl, type }).save()
     
 }
-const getOneData = () => {
-    schedule.scheduleJob('01 0 0 * * *', ()=> {
-        getSiteData()
-    })
-}
-getOneData()
-// module.exports = getOneData
+// getOneData()
+module.exports = getOneData

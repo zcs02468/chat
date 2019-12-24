@@ -4,21 +4,8 @@ const Quote = require('../../db').Quote
 const getWeatherData = require('./getWeatherData');
 const getHtmlData = require("../email/getHtmlData");
 const formatDate = require("../../utils/formatDate");
-
-//发送者邮箱厂家
-const EmailService = "qiye.aliyun";
-//发送者邮箱账户SMTP授权码
-const EmailAuth = {
-    user: "zcs@zcssite.com",
-    pass: "Zxcv02468"
-};
-//发送者昵称与邮箱地址
-const EmailFrom = '"zcs" <zcs@zcssite.com>';
-
-//接收者邮箱
-const EmailTo = "466971601@qq.com";
-
-const EmailSubject = "每日一报";
+const {EmailAuth, EmailService, EmailFrom, EmailToArr, EmailSubject} = require('../../config')
+// const aa = require('../../config/index')
 
 let transporter = nodemailer.createTransport({
     service: EmailService, // 发送者的邮箱厂商，支持列表：https://nodemailer.com/smtp/well-known/
@@ -53,7 +40,7 @@ const sendMail = async function() {
 
     let mailOptions = {
         from: EmailFrom, // 发送者昵称和地址
-        to: EmailTo, // 接收者的邮箱地址
+        to: EmailToArr[0].to, // 接收者的邮箱地址
         subject: EmailSubject, // 邮件主题
         // text: "test mail" //邮件的text
         html: htmlData  //也可以用html发送

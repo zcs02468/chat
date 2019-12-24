@@ -1,3 +1,9 @@
+// require("env2")("./.env"); // 环境变量
+// let dotenv =  require('dotenv');
+// dotenv.config('./env');
+// console.log('NODE_ENV',process.env.NODE_ENV);
+
+
 const Koa = require('koa')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')

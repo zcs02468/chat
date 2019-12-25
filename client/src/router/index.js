@@ -1,7 +1,6 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
-import Home from '../page/home/index.vue'
 
 Vue.use(Router)
 
@@ -17,7 +16,7 @@ const router = new Router({
   {
     path: '/home',
     name: 'home',
-    component: Home,
+    component: () => import(/* webpackChunkName: "login" */ '../page/home/index.vue'),
     meta: {
       requiresAuth: true
     }
@@ -25,9 +24,6 @@ const router = new Router({
   {
     path: '/login',
     name: 'login',
-    meta: {
-      requiresAuth: true
-    },
     component: () => import(/* webpackChunkName: "login" */ '../page/login/index.vue')
   }
 ]

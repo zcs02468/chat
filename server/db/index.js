@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
 
-mongoose.connect("mongodb://localhost:27017/itc", { useNewUrlParser: true }, function(err) {
+mongoose.connect("mongodb://localhost:27017/itc", { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
     if (err) {
         console.log(err);
     } else {

@@ -1,6 +1,5 @@
 const cheerio = require("cheerio");
 const request = require("request");
-const schedule = require('node-schedule');
 const Quote = require('../../db').Quote;
 
 const url = 'http://wufazhuce.com'

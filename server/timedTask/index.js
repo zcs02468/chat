@@ -1,5 +1,6 @@
 const getOneData = require('../module/getOneData/index')
 const sendMail = require('../module/email/index')
+const schedule = require('node-schedule');
 
 
 
@@ -7,7 +8,7 @@ const timeTask = async function () {
     schedule.scheduleJob('01 0 0 * * *', ()=> {
         getOneData()
     })
-    schedule.scheduleJob('00 30 9 * * *', ()=> {
+    schedule.scheduleJob('0 30 9 * * *', ()=> {
         sendMail()
     })
 }

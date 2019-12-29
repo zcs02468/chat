@@ -72,6 +72,17 @@ const getBookDetail = async function(url) {
             bookUrl: aDom.attr('href')
         })
     })
+    console.log({
+        name: name,
+        author: author,
+        imgUrl: imgUrl,
+        type: type,
+        describe: describe,
+        lastUpdateTime: lastUpdateTime,
+        newSection: newSection,
+        list: list
+    });
+    
     return {
         name: name,
         author: author,
@@ -87,17 +98,17 @@ const getBookDetail = async function(url) {
 
 
 const getContent = async function(url) {
+    console.log( 'urlList.biquge.bookDetail(url)', urlList.biquge.bookDetail(url) );
+    
     const body = await fetch(urlList.biquge.bookDetail(url));
-    $ = $(body);
+    $ = cheerio.load(body,{decodeEntities: false});
     let title = $('h1').text();
-    let content = $('#content').text();
+    let content = $('#content').html();
     return {
         title: title,
         content: content
     }
 }
-
-searchBook('圣墟')
 module.exports = {
     searchBook,
     getBookDetail,

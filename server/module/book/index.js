@@ -1,7 +1,10 @@
 const cheerio = require("cheerio");
 const fetch = require('../../utils/fetch')
 const {removeAllSpaces} = require('../../utils/untils')
-
+const biquge = require('./biquge/index')
+const b5200 = require('./b5200/index')
+const request = require("request");
+const superagent = require('./superagent')
 
 const urlList = {
     biquge: {
@@ -14,37 +17,26 @@ const urlList = {
         bookDetail: function (bookUrl) {
             return `http://www.biquge.com.cn${ bookUrl }`
         },
+    },
+    b5200: {
+        baseUrl: function() {
+            return `http://www.b5200.net`
+        },
+        search: function ( bookName ) {
+            return `http://www.b5200.net/modules/article/search.php?searchkey=${ encodeURIComponent(bookName) }`
+        },
+        bookDetail: function (bookUrl) {
+            return `http://www.b5200.net${ bookUrl }`
+        },
     }
 }
 
 const searchBook = async function (name) {
     try {
         let body = await fetch(urlList.biquge.search(name));
-        $ = cheerio.load(body);
-        let arr = [];
-        $('.result-list .result-item').each(function(i, elem) {
-            $elem = $(elem);
-            let bookImg = $elem.find('img').attr('src')
-            let name = $elem.find('.result-game-item-title-link').attr('title');
-            let href = $elem.find('.result-game-item-title-link').attr('href');
-            let info = $elem.find('.result-game-item-info span').text();
-            let author = info.split('作者：')[1].split('类型：')[0];
-            let typeDom = $elem.find('.result-game-item-info-tag')[1];
-            let describe = $elem.find('.result-game-item-desc').text();
-            arr.push({
-                type:'biquge',
-                name: name,
-                bookImg: bookImg,
-                bookUrl: href,
-                author: author,
-                type: removeAllSpaces($(typeDom).text()),
-                describe: describe
-            })
-        });
-        return arr;
+        return biquge.parsingSearchResults(body)
     } catch (error) {
         console.log( error);
-        
         return  error
     }
 }
@@ -52,7 +44,7 @@ const searchBook = async function (name) {
 const getBookDetail = async function(url) {
     const body = await fetch(urlList.biquge.bookDetail(url));
     $ = cheerio.load(body);
-    let info = $('#info p')
+    let info = $('#info p');
     let authorDom  = info[0];
     let typeDom = info[1];
     let timeDom = info[2];
@@ -97,7 +89,7 @@ const getContent = async function(url) {
     }
 }
 
-searchBook('圣墟')
+searchBook('一念永恒')
 module.exports = {
     searchBook,
     getBookDetail,

@@ -8,10 +8,7 @@ const router = new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    redirect: '/home',
-    meta: {
-      requiresAuth: true
-    }
+    component: () => import(/* webpackChunkName: "login" */ '../page/index.vue'),
   },
   {
     path: '/home',

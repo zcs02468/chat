@@ -1,7 +1,8 @@
+const {MongoDbUser, MongoDbPwd} = require('../config')
 const mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
 
-mongoose.connect("mongodb://localhost:27017/itc", { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
+mongoose.connect(`mongodb://${MongoDbUser}:${MongoDbPwd}@localhost:27017/itc`, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
     if (err) {
         console.log(err);
     } else {
@@ -38,7 +39,6 @@ let recordSchema = new Schema({
     img: Array,
     view: 0,
     creater: String,
-    // TODO:这里很重要，需要什么记得加上
     avatar: String,
     user_id: {
         type: mongoose.Schema.ObjectId,
@@ -50,11 +50,15 @@ let quoteSchema = new Schema({
     content: String,
     quoteImgUrl: String,
     type: String,
-    //创建时间
+    //创建时间./mongod  -dbpath /data/db/
     create_time: {
         type: String,
         default: Date.now
     },
+})
+
+let emailSchema = new Schema({
+
 })
 
 exports.CheckCode = mongoose.model("Checkcode", checkcodeSchema);

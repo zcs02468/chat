@@ -5,7 +5,11 @@ const sha1 = require('sha1')
 const xss = require('xss')
 
 module.exports = {
-    // 用户登录
+    // TODO: 用户登录
+    /**
+     * @param {*} ctx 
+     * @param {*} next 
+     */
     async login (ctx, next) {
         let { user_id = '', user_pwd = '', code = '', code_token = '' } = ctx.request.body
         try {

@@ -1,5 +1,5 @@
 require('dotenv').config('../env')
-const { EmianService, EamilAuth_user, EamilAuth_pass, NODE_ENV } =  process.env
+const { EmianService, EamilAuth_user, EamilAuth_pass, NODE_ENV, MongoDbUser, MongoDbPwd } =  process.env
 module.exports = {
     EmailService: EmianService, //发送者邮箱厂家
     EmailAuth: {
@@ -17,4 +17,7 @@ module.exports = {
             to: "466971601@qq.com",
         }
     ],
+    MongoDbUser: MongoDbUser,
+    MongoDbPwd: MongoDbPwd,
+
 };

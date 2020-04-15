@@ -27,6 +27,10 @@ const getOneData = async() => {
     }
 }
 
+const getToEmail = async() => {
+    
+}
+
 const getAllData = async() => {
     let oneData = await getOneData();
     let weatherData = await getWeatherData();

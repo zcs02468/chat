@@ -58,10 +58,18 @@ let quoteSchema = new Schema({
 })
 
 let emailSchema = new Schema({
-
+    from_name:String, //发送者名称
+    to_email: String, //接收者邮箱地址
+    subject: String, //邮件主题
+    from_time: String, //邮件发送时间
+    create_time:{
+        type: String,
+        default: Date.now
+    }
 })
 
 exports.CheckCode = mongoose.model("Checkcode", checkcodeSchema);
 exports.User = mongoose.model("User", userSchema);
 exports.Record = mongoose.model("Record", recordSchema);
 exports.Quote = mongoose.model("Quote", quoteSchema);
+exports.Email = moogoose.model("Email", emailSchema);

@@ -11,6 +11,8 @@ module.exports = {
      * @param {*} next 
      */
     async login (ctx, next) {
+        console.log('$$$$$$$$$$$');
+        
         let { user_id = '', user_pwd = '', code = '', code_token = '' } = ctx.request.body
         try {
             if( user_id.length < 4 || user_id.length > 10 ) {

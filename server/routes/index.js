@@ -13,6 +13,11 @@ router.post('/api/user/register', controller.user.register)// 注册
 router.post('/api/user/login', controller.user.login)// 登陆
 router.get('/api/user/getQuote', controller.quote.getQuote)// 登陆
 
+
+//邮件管理
+router.post('/api/email/createTimingEmail', controller.email.createTimingEmail)
+router.get('/api/email/getEmailList', controller.email.getEmailList)
+
 //书
 router.get('/book/search', controller.book.search)// 登陆
 router.get('/book/detail', controller.book.detail)// 书籍详情

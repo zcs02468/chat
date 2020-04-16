@@ -90,8 +90,6 @@ const getBookDetail = async function(url) {
 
 
 const getContent = async function(url) {
-    console.log( 'urlList.biquge.bookDetail(url)', urlList.biquge.bookDetail(url) );
-    
     const body = await fetch(urlList.biquge.bookDetail(url));
     $ = cheerio.load(body,{decodeEntities: false});
     let title = $('h1').text();

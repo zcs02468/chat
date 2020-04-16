@@ -1,14 +1,24 @@
-const {MongoDbUser, MongoDbPwd} = require('../config')
+const {MongoDbUser, MongoDbPwd, NODE_ENV} = require('../config')
 const mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
 
-mongoose.connect(`mongodb://${MongoDbUser}:${MongoDbPwd}@localhost:27017/itc`, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("Connection success!");
-    }
-});
+if( NODE_ENV === 'dev' ) {
+    mongoose.connect(`mongodb://localhost:27017/itc`, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Connection success!");
+        }
+    });
+}else {
+    mongoose.connect(`mongodb://${MongoDbUser}:${MongoDbPwd}@localhost:27017/itc`, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Connection success!");
+        }
+    });
+}
 const Schema = mongoose.Schema;
 
 // 验证码
@@ -58,11 +68,12 @@ let quoteSchema = new Schema({
 })
 
 let emailSchema = new Schema({
-    from_name:String, //发送者名称
-    to_email: String, //接收者邮箱地址
+    fromName:String, //发送者名称
+    toEmail: String, //接收者邮箱地址
     subject: String, //邮件主题
-    from_time: String, //邮件发送时间
-    create_time:{
+    fromTime: String, //邮件发送时间
+    fromFrequency: String,
+    createTime:{
         type: String,
         default: Date.now
     }
@@ -72,4 +83,4 @@ exports.CheckCode = mongoose.model("Checkcode", checkcodeSchema);
 exports.User = mongoose.model("User", userSchema);
 exports.Record = mongoose.model("Record", recordSchema);
 exports.Quote = mongoose.model("Quote", quoteSchema);
-exports.Email = moogoose.model("Email", emailSchema);
+exports.Email = mongoose.model("Email", emailSchema);

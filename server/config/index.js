@@ -19,5 +19,5 @@ module.exports = {
     ],
     MongoDbUser: MongoDbUser,
     MongoDbPwd: MongoDbPwd,
-
+    NODE_ENV: NODE_ENV
 };

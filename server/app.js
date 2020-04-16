@@ -22,10 +22,11 @@ const app = new Koa()
 const TimeTask = require('./timedTask/index')
 
 //定时任务
-TimeTask()
+// TimeTask()
 
 
 onerror(app)
+
 
 //跨域配置
 app.use(cors({
@@ -42,12 +43,13 @@ app.use(cors({
 app.use(bodyparser({
     enableTypes: ['json', 'form', 'text']
 }))
-app.use(check_token)
+// app.use(check_token)
 app.use(json())
 app.use(logger())
 
 //5d7b3d20895f6021df4205eed2561b55568afd59
 // routes
+
 app.use(index.routes(), index.allowedMethods())
 
 module.exports = app

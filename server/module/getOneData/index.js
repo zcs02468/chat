@@ -10,15 +10,13 @@ const getOneData = function () {
         if( !err && res.statusCode == 200 ) {
             siteQuery(body)
         }else {
-            console.log('err:'+err);
+            console.error('err:'+err);
         }
     })
 }
 
 const siteQuery = async function (body) {
     $ = cheerio.load(body);
-    // let content = $('#quote').text()
-    // let quoteImgUrl = $('tbody').find('.div-link ui-link').attr('src');
     let selectItem = $("#carousel-one .carousel-inner .item");
     let todayOne = selectItem[0];
     let quoteImgUrl = $(todayOne).find(".fp-one-imagen").attr("src");
@@ -27,5 +25,4 @@ const siteQuery = async function (body) {
     new Quote({ content, quoteImgUrl, type }).save()
     
 }
-// getOneData()
 module.exports = getOneData

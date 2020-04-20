@@ -11,8 +11,6 @@ module.exports = {
      * @param {*} next 
      */
     async login (ctx, next) {
-        console.log('$$$$$$$$$$$');
-        
         let { user_id = '', user_pwd = '', code = '', code_token = '' } = ctx.request.body
         try {
             if( user_id.length < 4 || user_id.length > 10 ) {
@@ -52,7 +50,7 @@ module.exports = {
                 }
             }
         } catch (error) {
-            console.log(error)
+            console.error(error)
             ctx.body = {
                 code: 500,
                 msg: '登录失败，服务器异常!'
@@ -62,8 +60,6 @@ module.exports = {
     async register (ctx, next) {
         // user_name -- 昵称  user_id---用户名  user_pwd---用户密码   re_user_pwd---确认密码  code--验证码
         let { user_name = '', user_id = '', user_pwd = '', re_user_pwd = '', code = '', code_token = '' } = ctx.request.body
-        console.log(user_name, user_id, user_pwd, re_user_pwd, code, code_token );
-        
         try {
             if( user_name.length < 2 || user_name.length > 8 ) {
                 ctx.body = {
@@ -97,8 +93,6 @@ module.exports = {
             }
             //判断用户名是否重复
             let res = await User.find({user_id})
-            console.log( 'resres', res );
-            
             if( res.length !== 0 ) {
                 ctx.body = {
                     code: 409,
@@ -124,7 +118,7 @@ module.exports = {
                 }
             }
         } catch (error) {
-            console.log( 'error', error );
+            console.error( 'error', error );
             
             ctx.body = {
                 code: 500,

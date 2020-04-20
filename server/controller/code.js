@@ -6,9 +6,6 @@ const svgCaptcha = require('svg-captcha')
 module.exports = {
     async getCode(ctx, next) {
         try {
-            // let { code, img } = makeCapcha();
-            // let a  = getAuthCode()
-            // console.log( 'aaaaaaa', a );
             let { img, code } = getAuthCode()
             let token = create_token(code);
             await new CheckCode({ token, code }).save()

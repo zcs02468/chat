@@ -24,6 +24,11 @@ router.get('/book/detail', controller.book.detail)// 书籍详情
 router.get('/book/content', controller.book.content)// 书籍内容
 
 
+//博客
+router.get('/api/blog/getBlogList', controller.blog.getBlogList)
+router.post("/api/blog/saveBlog", controller.blog.saveBlog)
+router.get("/api/blog/getPointBlog", controller.blog.getPointBlog)
+
 
 
 module.exports = router

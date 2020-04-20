@@ -11,7 +11,7 @@ module.exports = {
                 data: data
             }
         } catch (error) {
-            console.log( 'error', error );
+            console.error( 'error', error );
             
             ctx.body = {
                 code: 500,
@@ -29,7 +29,7 @@ module.exports = {
                 data: data
             }
         } catch (error) {
-            console.log( 'error', error );
+            console.error( 'error', error );
             ctx.body = {
                 code: 500,
                 msg: '查询失败！'
@@ -46,7 +46,7 @@ module.exports = {
                 data: data
             }
         } catch (error) {
-            console.log( 'error', error );
+            console.error( 'error', error );
             ctx.body = {
                 code: 500,
                 msg: '查询失败！'

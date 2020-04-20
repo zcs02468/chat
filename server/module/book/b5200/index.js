@@ -19,7 +19,7 @@ const parsingSearchResults = function (body) {
             let tds = $elem.find('td');
             let nameDom = tds[0]
             let name = nameDom.text()
-            console.log( '222222222', name );
+            // console.log( '222222222', name );
             
             // arr.push({
             //     type:'biquge',

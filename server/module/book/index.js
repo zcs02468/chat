@@ -36,7 +36,7 @@ const searchBook = async function (name) {
         let body = await fetch(urlList.biquge.search(name));
         return biquge.parsingSearchResults(body)
     } catch (error) {
-        console.log( error);
+        console.error( error);
         return  error
     }
 }
@@ -64,17 +64,6 @@ const getBookDetail = async function(url) {
             bookUrl: aDom.attr('href')
         })
     })
-    console.log({
-        name: name,
-        author: author,
-        imgUrl: imgUrl,
-        type: type,
-        describe: describe,
-        lastUpdateTime: lastUpdateTime,
-        newSection: newSection,
-        list: list
-    });
-    
     return {
         name: name,
         author: author,

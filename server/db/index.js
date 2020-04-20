@@ -79,8 +79,19 @@ let emailSchema = new Schema({
     }
 })
 
+let blogSchema = new Schema({
+    title: String,
+    rawContent: String,
+    htmlContent: String,
+    createTime:{
+        type: String,
+        default: Date.now
+    }
+})
+
 exports.CheckCode = mongoose.model("Checkcode", checkcodeSchema);
 exports.User = mongoose.model("User", userSchema);
 exports.Record = mongoose.model("Record", recordSchema);
 exports.Quote = mongoose.model("Quote", quoteSchema);
 exports.Email = mongoose.model("Email", emailSchema);
+exports.Blog = mongoose.model("Blog", blogSchema);

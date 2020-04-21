@@ -1,0 +1,57 @@
+.editor-container {
+    width: 100%;
+}
+.editor-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0 64px 0;
+    // min-height: 1024px;
+}
+.bf-container {
+    width: 874px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 2px 8px rgba(115, 115, 115, 0.08);
+    height: 100%;
+}
+
+.bf-content {
+    height: 100%;
+    padding: 20px 60px 90px 60px;
+}
+// .DraftEditor-root {
+//     width: 874px;
+//     border: 1px solid #e8e8e8;
+//     box-shadow: 0 2px 8px rgba(115, 115, 115, 0.08);
+//     height: 100%;
+// }
+// .DraftEditor-editorContainer {
+//     height: 100%;
+// }
+.bf-container .public-DraftEditor-content .braft-code-block-wrapper .braft-code-block {
+    max-height: none;
+}
+.title-box {
+    display: flex;
+    justify-content: center;
+}
+.title {
+    width: 874px;
+    padding: 32px 60px 0 60px;
+    font-size: 36px;
+    span {
+        font-weight: 800;
+    }
+    textarea {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        resize: none;
+        min-height: 50px;
+        line-height: 1.389;
+        vertical-align: bottom;
+        width: 100%;
+    }
+}

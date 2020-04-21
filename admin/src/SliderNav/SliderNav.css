@@ -1,0 +1,9 @@
+.nav-box {
+    position: fixed;
+    width: 256px;
+    height: 95vh;
+}
+
+.nav {
+    height: 100%;
+}

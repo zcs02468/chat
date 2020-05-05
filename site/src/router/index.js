@@ -11,6 +11,7 @@ function AppRouter() {
                 <div className="pageContent">
                     <Route path="/" exact component={HomePage} />
                 </div>
+                
             </div>
         </Router>
     );

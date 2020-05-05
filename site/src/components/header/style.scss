@@ -4,7 +4,7 @@
         position: fixed;
         top: 0;
         height: 50px;
-        width: 100vw;
+        width: 100%;
         z-index: 3;
         background: rgba(255,255,255,.1);
         transition: all .6s;
@@ -31,22 +31,21 @@
 
 
     .header-warp {
-        width: 100vw;
+        width: 100%;
         height: 550px;
         padding: 0;
         -webkit-box-shadow: initial;
         box-shadow: initial;
         border-radius: initial;
         position: relative;
+        animation: fade-in-bottom 1s .3s backwards;
     }
     .header-background {
         background-image: url("../../assets/image/siteBack.jpg");
         // background-image: url("https://s1.ax1x.com/2020/05/05/YFL6Bt.jpg");
         height: 550px;
-        width: 100vw;
+        width: 100%;
         background-repeat: no-repeat;
-        -webkit-animation: fade-in-bottom 1s .3s backwards;
-        animation: fade-in-bottom 1s .3s backwards;
         background-attachment: fixed;
         position: relative;
         &:after {
@@ -60,7 +59,7 @@
         }
     }
     .site-meta {
-        width: 100vw;
+        width: 100%;
         height: 550px;
         position: absolute;
         top: 0;
@@ -84,4 +83,18 @@
     }
 
 
+}
+
+@keyframes fade-in-bottom {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
 }

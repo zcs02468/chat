@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import { message,Button  } from "antd";
+import { message } from "antd";
 // 引入编辑器组件
 import BraftEditor from 'braft-editor'
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
@@ -76,15 +76,11 @@ export default class EditorDemo extends React.Component {
     handleEditorChange = (editorState) => {
         this.setState({ editorState })
     }
-    goToDetail() {
-        this.props.history.push(`/detail/5e9d5ad0427c712e1ccec093`);  
-    }
     render () {
 
         const { editorState } = this.state
         return (
             <div className="my-component editor-container">
-                <Button type="primary" onClick={this.goToDetail}>跳转详情页</Button>
                 <div className="title-box">
                     <div className="title">
                         <textarea rows="1" maxLength="128" placeholder="请输入标题" value={this.state.title} onChange ={this.titleChange.bind(this) }></textarea>

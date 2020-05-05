@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     padding: 16px 0 64px 0;
-    // min-height: 1024px;
+    min-height: 800px;
 }
 .bf-container {
     width: 874px;
@@ -17,18 +17,10 @@
 }
 
 .bf-content {
-    height: 100%;
+    min-height: 600px;
+    overflow: auto;
     padding: 20px 60px 90px 60px;
 }
-// .DraftEditor-root {
-//     width: 874px;
-//     border: 1px solid #e8e8e8;
-//     box-shadow: 0 2px 8px rgba(115, 115, 115, 0.08);
-//     height: 100%;
-// }
-// .DraftEditor-editorContainer {
-//     height: 100%;
-// }
 .bf-container .public-DraftEditor-content .braft-code-block-wrapper .braft-code-block {
     max-height: none;
 }

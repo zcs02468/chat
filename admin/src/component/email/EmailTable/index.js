@@ -11,15 +11,6 @@ class EmailTable extends Component {
     }
     columns = [
         {
-            title: "发送者昵称",
-            dataIndex: "fromName",
-            // render: (text) => <a>{text}</a>,
-        },
-        {
-            title: "邮件主题",
-            dataIndex: "subject",
-        },
-        {
             title: "接收者邮箱地址",
             dataIndex: "toEmail",
         },
@@ -35,29 +26,23 @@ class EmailTable extends Component {
             }
         },
         {
+            title: "是否放入公开信箱",
+            dataIndex: "open",
+            render: val => {
+                return val ? "是" : "否"
+            }
+        },
+        {
             title: '状态',
             dataIndex: 'tags',
             render: tags => (
                 <span>
                     {
-                        tags 
-                        ? <Tag color="green">已发送</Tag>
-                        : <Tag color="volcano">未发送</Tag>
-                    // tags.map(tag => {
-                    //     let color = tag.length > 5 ? 'geekblue' : 'green';
-                    //     if (tag === 'loser') {
-                    //         color = 'volcano';
-                    //     }
-                    //     return (
-                    //         <Tag color={color} key="已发送">
-                    //         {tag.toUpperCase()}
-                    //         </Tag>
-                    //     );
-                    // })
+                        tags == 0 ? <Tag color="processing">未发送</Tag> : ( tags == 1 ? <Tag color="green">已发送</Tag> : <Tag color="error">发送失败</Tag>)
                     }
                 </span>
             ),
-        }
+        },
     ];
     rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {

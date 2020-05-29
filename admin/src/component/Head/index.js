@@ -6,7 +6,7 @@ class Head extends Component {
     render() {
         return (
             <div className="head-box">
-                <header className="App-header">1111</header>
+                <header className="App-header">博客</header>
             </div>
         )
     }

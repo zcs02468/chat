@@ -20,9 +20,13 @@
     min-height: 600px;
     overflow: auto;
     padding: 20px 60px 90px 60px;
+    height: auto;
 }
 .bf-container .public-DraftEditor-content .braft-code-block-wrapper .braft-code-block {
     max-height: none;
+}
+.bf-container .DraftEditor-root, .bf-container .public-DraftEditor-content {
+    min-height: 600px;
 }
 .title-box {
     display: flex;
@@ -30,7 +34,7 @@
 }
 .title {
     width: 874px;
-    padding: 32px 60px 0 60px;
+    padding: 112px 60px 0 60px;
     font-size: 36px;
     span {
         font-weight: 800;
@@ -46,4 +50,25 @@
         vertical-align: bottom;
         width: 100%;
     }
+}
+
+.operation-box {
+    width: 100%;
+    position: fixed;
+    top: 64px;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 100;    
+    background: #fff;
+    padding: 10px;
+    .btn {
+        margin: 0 20px;
+    }
+}
+.editor-box .bf-controlbar  {
+    position: fixed;
+    top: 118px;
+    left: 256px;
+    background: #fcfcfc;
+    z-index: 100;
 }

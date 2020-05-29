@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import { message } from "antd";
+import { message, Button } from "antd";
 // 引入编辑器组件
 import BraftEditor from 'braft-editor'
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
@@ -42,6 +42,10 @@ export default class EditorDemo extends React.Component {
         
     }
     submitContent = async () => {
+        if( !this.state.title ) {
+            message.warn('请填写数据');
+            return;
+        }
         // 在编辑器获得焦点时按下ctrl+s会执行此方法
         // 编辑器内容提交到服务端之前，可直接调用editorState.toHTML()来获取HTML格式的内容
         const htmlContent = this.state.editorState.toHTML();
@@ -81,6 +85,9 @@ export default class EditorDemo extends React.Component {
         const { editorState } = this.state
         return (
             <div className="my-component editor-container">
+                <div className="operation-box">
+                    <Button className="btn" type="primary" onClick={this.submitContent}>保存</Button>
+                </div>
                 <div className="title-box">
                     <div className="title">
                         <textarea rows="1" maxLength="128" placeholder="请输入标题" value={this.state.title} onChange ={this.titleChange.bind(this) }></textarea>
